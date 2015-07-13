@@ -929,3 +929,8 @@ a.pagination-item:hover {
   .sidebar-nav-item.social-links a {
     padding-left: 3px;
     padding-right: 3px; }
+
+.theme-custom-sd .sidebar, .theme-custom-sd .sidebar-toggle:active, .theme-custom-sd #sidebar-checkbox:checked ~ .sidebar-toggle {
+  background-color: #0098db; }
+.theme-custom-sd .container a, .theme-custom-sd .sidebar-toggle, .theme-custom-sd .related-posts li a:hover {
+  color: #0098db; }

@@ -5,6 +5,7 @@ The main SCSS file for everything, yep
 @import "poole";
 @import "syntax";
 @import "lanyon";
+@import "variables";
 
 .sidebar-nav-item.social-links {
   text-align:center;
@@ -13,3 +14,15 @@ The main SCSS file for everything, yep
     padding-right:3px;
   }
 }
+
+.theme-custom-sd {
+  .sidebar, .sidebar-toggle:active, #sidebar-checkbox:checked ~ .sidebar-toggle {
+    background-color: $blue;
+  }
+  .container a, .sidebar-toggle, .related-posts li a:hover {
+    color: $blue;
+  }
+}
+
+
+
