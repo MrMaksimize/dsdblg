@@ -1,4 +1,4 @@
-// Generated on 2015-06-07 using generator-jekyllized 0.7.3
+// Generated on 2015-08-04 using generator-jekyllized 0.7.3
 "use strict";
 
 var gulp = require("gulp");
@@ -32,7 +32,7 @@ gulp.task("jekyll-rebuild", ["jekyll:dev"], function () {
 // Almost identical to the above task, but instead we load in the build configuration
 // that overwrites some of the settings in the regular configuration so that you
 // don"t end up publishing your drafts or future posts
-gulp.task("jekyll:prod", $.shell.task("jekyll build --config _config.yml,_config.build.yml"));
+gulp.task("jekyll:prod", $.shell.task("bundle exec jekyll build --config _config.yml,_config.build.yml"));
 
 // Compiles the SASS files and moves them into the "assets/stylesheets" directory
 gulp.task("styles", function () {
@@ -112,12 +112,14 @@ gulp.task("html", ["styles"], function () {
 
 
 // Task to upload your site to your personal GH Pages repo
-gulp.task('deploy', ['publish'], function () {
+gulp.task("deploy", function () {
   // Deploys your optimized site, you can change the settings in the html task if you want to
-  return gulp.src('./site/**/*')
+  return gulp.src("./site/**/*")
     .pipe($.ghPages({
-      branch: 'master',
-      remoteUrl: 'git@github.com:MrMaksimize/testDev.git'
+      // Currently only personal GitHub Pages are supported so it will upload to the master
+      // branch and automatically overwrite anything that is in the directory
+      branch: "gh-pages",
+      cacheDir: ".publish"
     }));
 });
 
@@ -142,7 +144,9 @@ gulp.task("serve:dev", ["styles", "jekyll:dev"], function () {
     // tunnel: "",
     server: {
       baseDir: "serve"
-    }
+    },
+    host: process.env.IP || 'localhost',
+    port: process.env.PORT || '3000'
   });
 });
 
